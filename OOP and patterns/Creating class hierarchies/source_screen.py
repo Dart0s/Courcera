@@ -5,7 +5,7 @@ import pygame
 import random
 import math
 
-SCREEN_DIM = (800, 600)
+SCREEN_DIM = (1000, 800)
 
 
 # =======================================================================================
@@ -162,7 +162,7 @@ if __name__ == "__main__":
                 points.append(event.pos)
                 speeds.append((random.random() * 2, random.random() * 2))
 
-        gameDisplay.fill((0, 0, 0))
+        gameDisplay.fill((140, 140, 255))
         hue = (hue + 1) % 360
         color.hsla = (hue, 100, 50, 100)
         draw_points(points)

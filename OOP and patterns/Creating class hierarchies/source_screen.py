@@ -45,8 +45,7 @@ def draw_points(points, style="points", width=3, color=(255, 255, 255)):
     """функция отрисовки точек на экране"""
     if style == "line":
         for p_n in range(-1, len(points) - 1):
-            pygame.draw.line(gameDisplay, color,
-                             (int(points[p_n][0]), int(points[p_n][1])),
+            pygame.draw.line(gameDisplay, color,(int(points[p_n][0]), int(points[p_n][1])),
                              (int(points[p_n + 1][0]), int(points[p_n + 1][1])), width)
 
     elif style == "points":
@@ -87,6 +86,7 @@ def get_point(points, alpha, deg=None):
     if deg == 0:
         return points[0]
     return add(mul(points[deg], alpha), mul(get_point(points, alpha, deg - 1), 1 - alpha))
+   # return ((points[deg] * alpha) + mul(get_point(points, alpha * deg - 1) * 1 - alpha))
 
 
 def get_points(base_points, count):

@@ -24,6 +24,9 @@ class Vec2d:
         self.y *= k
         return self
 
+    def __str__(self):
+        return f'{self.x}, {self.y}'
+
     def length(self):
         return ((self.x * self.x) + (self.y * self.y)) ** 0.5
 
@@ -65,36 +68,33 @@ class Knot(Polyline):
         super().__init__()
         self.res = []
         self.ptn = []
-        self.count = 4
+        self.count = 35
 
-    def get_point(self, alpha, deg=None):
+    def get_point(self, points, alpha, deg=None):
         if deg is None:
-            deg = len(self.ptn) - 1
+            deg = len(points) - 1
         if deg == 0:
-            return self.ptn[0]
-        return self.ptn[deg] * alpha + self.get_point(alpha, deg - 1) * (1 - alpha)
+            return points[0]
+        return (points[deg] * alpha) + (self.get_point(points, alpha, deg - 1) * (1 - alpha))
 
-    def get_points(self):
+    def get_points(self, points):
         alpha = 1 / self.count
-        print(alpha)
         res = []
         for i in range(self.count):
-            res.append(self.get_point(i * alpha))
+            res.append(self.get_point(points, i * alpha))
         return res
 
     def get_knot(self):
         if len(self.points) < 3:
-            self.res = []
             return []
         self.res = []
         for i in range(-2, len(self.points) - 2):
-            #self.ptn = []
-            self.res.append((self.points[i] + self.points[i + 1]) * 0.5)
-            self.res.append(self.points[i + 1])
-            self.res.append((self.points[i + 1] + self.points[i + 2]) * 0.5)
-            print('ptn =', self.ptn)
-            #self.res.extend(self.get_points())
-            print('res =', self.res)
+            points = []
+            points.append((self.points[i] + self.points[i + 1]) * 0.5)
+            points.append(self.points[i + 1])
+            points.append((self.points[i + 1] + self.points[i + 2]) * 0.5)
+
+            self.res.extend(self.get_points(points))
 
     def draw_knot(self, width=3, color=(255, 255, 255)):
         for p_n in range(-1, len(self.res) - 1):
@@ -144,7 +144,7 @@ if __name__ == "__main__":
                 knot.set_point(point, speeds)
 
         gameDisplay.fill((0, 0, 0))
-        hue = (hue + 1) % 360
+        hue = (hue + 0.05) % 360
         colors.hsla = (hue, 100, 50, 100)
         knot.draw_points()
 

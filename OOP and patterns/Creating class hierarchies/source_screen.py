@@ -84,6 +84,8 @@ def get_point(points, alpha, deg=None):
     if deg is None:
         deg = len(points) - 1
     if deg == 0:
+        print(alpha)
+        print(1 - alpha)
         return points[0]
     return add(mul(points[deg], alpha), mul(get_point(points, alpha, deg - 1), 1 - alpha))
    # return ((points[deg] * alpha) + mul(get_point(points, alpha * deg - 1) * 1 - alpha))
@@ -93,6 +95,7 @@ def get_points(base_points, count):
     alpha = 1 / count
     res = []
     for i in range(count):
+
         res.append(get_point(base_points, i * alpha))
     return res
 

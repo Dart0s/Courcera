@@ -63,43 +63,44 @@ class Polyline:
                                (int(p.x), int(p.y)), width)
 
 
-class Knot(Polyline):
-    def __init__(self):
-        super().__init__()
-        self.res = []
-        self.ptn = []
-        self.count = 35
+def __init__(self, points, count=35):
+    super().__init__()
+    self.points = points
+    self.count = count
 
-    def get_point(self, points, alpha, deg=None):
-        if deg is None:
-            deg = len(points) - 1
-        if deg == 0:
-            return points[0]
-        return (points[deg] * alpha) + (self.get_point(points, alpha, deg - 1) * (1 - alpha))
 
-    def get_points(self, points):
-        alpha = 1 / self.count
-        res = []
-        for i in range(self.count):
-            res.append(self.get_point(points, i * alpha))
-        return res
+def get_point(self, points, alpha, deg=None):
+    if deg is None:
+        deg = len(points) - 1
+    if deg == 0:
+        return points[0]
+    return points[deg] * alpha + self.get_point(points, alpha, deg - 1) * (1 - alpha)
 
-    def get_knot(self):
-        if len(self.points) < 3:
-            return []
-        self.res = []
-        for i in range(-2, len(self.points) - 2):
-            points = []
-            points.append((self.points[i] + self.points[i + 1]) * 0.5)
-            points.append(self.points[i + 1])
-            points.append((self.points[i + 1] + self.points[i + 2]) * 0.5)
 
-            self.res.extend(self.get_points(points))
+def get_points(self, base_points, count):
+    alpha = 1 / count
+    res = []
+    for i in range(count):
+        res.append(self.get_point(base_points, i * alpha))
+    return res
 
-    def draw_knot(self, width=3, color=(255, 255, 255)):
-        for p_n in range(-1, len(self.res) - 1):
-            pygame.draw.line(gameDisplay, color, (int(self.res[p_n].x), int(self.res[p_n].y)),
-                             (int(self.res[p_n + 1].x), int(self.res[p_n + 1].y)), width)
+
+def get_knot(self):
+    if len(self.points) < 3:
+        return []
+    res = []
+    for i in range(-2, len(self.points) - 2):
+        ptn = []
+        ptn.append((self.points[i] + self.points[i + 1]) * 0.5)
+        ptn.append(self.points[i + 1])
+        ptn.append((self.points[i + 1] + self.points[i + 2]) * 0.5)
+        res.extend(self.get_points(ptn, self.count))
+    return res
+
+    def draw_knot(self, res, width=3, color=(255, 255, 255)):
+        for p_n in range(-1, len(res) - 1):
+            pygame.draw.line(gameDisplay, color, (int(res[p_n].x), int(res[p_n].y)),
+                             (int(res[p_n + 1].x), int(res[p_n + 1].y)), width)
 
     def set_point(self, vector: Vec2d, speed: Vec2d):
         super(Knot, self).set_point(vector, speed)
@@ -151,7 +152,7 @@ if __name__ == "__main__":
         if not pause:
             knot.set_points()
 
-        knot.draw_knot(color=colors)
+        knot.draw_knot(knot.get_knot(), color=colors)
         pygame.display.flip()
 
     pygame.display.quit()

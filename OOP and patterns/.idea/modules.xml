@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../Flask_Learning/.idea/Flask_Learning.iml" filepath="$PROJECT_DIR$/../../Flask_Learning/.idea/Flask_Learning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Introduction To Flask-Admin/.idea/Introduction To Flask-Admin.iml" filepath="$PROJECT_DIR$/../../Introduction To Flask-Admin/.idea/Introduction To Flask-Admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/OOP and patterns.iml" filepath="$PROJECT_DIR$/.idea/OOP and patterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../flaskProject/.idea/flaskProject.iml" filepath="$PROJECT_DIR$/../../flaskProject/.idea/flaskProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../pythonProject/.idea/pythonProject.iml" filepath="$PROJECT_DIR$/../../pythonProject/.idea/pythonProject.iml" />
+    </modules>
+  </component>
+</project>

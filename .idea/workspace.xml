@@ -20,10 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c429b659-f1ed-493b-8a12-f147521729ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/OOP and patterns/Abstract Fabric/solution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP and patterns/Abstract Fabric/source.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP and patterns/Парсинг YAML-файла/solution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP and patterns/Парсинг YAML-файла/source.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP and patterns/Abstract Fabric/yam_level.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +48,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Work/Богатырев В.О/TFA" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -122,6 +119,7 @@
       <workItem from="1604320887566" duration="3249000" />
       <workItem from="1604335241375" duration="2104000" />
       <workItem from="1604403585668" duration="102000" />
+      <workItem from="1605535164104" duration="864000" />
     </task>
     <servers />
   </component>
